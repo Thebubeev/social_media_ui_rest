@@ -39,8 +39,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                       subtitle:
                           Text(users[index].username, style: textDefaultTheme),
-                      trailing: Text(users[index].id.toString(),
-                          style: textDefaultTheme),
                       onTap: () {
                         Navigator.pushNamed(
                             context, RouteGenerator.USER_PROFILE,
