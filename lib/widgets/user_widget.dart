@@ -1,5 +1,5 @@
  import 'package:flutter/material.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 
 ExpansionTile userProfileInfo(BuildContext context, TextStyle textDefaultTheme, User user) {
     return ExpansionTile(

@@ -6,10 +6,10 @@ class Albums {
   final String thumbnailUrl;
 
   Albums({
-    this.albumId,
-    this.id,
-    this.title,
-    this.url, this.thumbnailUrl
+ required   this.albumId,
+  required  this.id,
+   required this.title,
+   required this.url,required this.thumbnailUrl
   });
 
   factory Albums.fromJson(Map<String, dynamic> json) {

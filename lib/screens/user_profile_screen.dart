@@ -1,14 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task_rest/config/router.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 import 'package:test_task_rest/screens/user_albums_screen.dart';
 import 'package:test_task_rest/screens/user_posts_screen.dart';
 import 'package:test_task_rest/widgets/user_widget.dart';
 
 class UserProfileScreen extends StatefulWidget {
   final User user;
-  const UserProfileScreen({Key key, this.user}) : super(key: key);
+  const UserProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -144,11 +143,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               SizedBox(
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, RouteGenerator.USER_POSTS,
-                        arguments: {
-                          'user': widget.user,
-                          'userpostid': widget.user.id
-                        });
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => UserPostScreen(
+                                userpostid: widget.user.id,
+                                user: widget.user))));
                   },
                   child: Card(
                     elevation: 2.0,
@@ -170,11 +170,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               SizedBox(
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, RouteGenerator.USER_ALBUMS,
-                        arguments: {
-                          'useralbumid': widget.user.id,
-                          'user': widget.user
-                        });
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => UserAlbumScreen(
+                                useralbumid: widget.user.id,
+                                user: widget.user))));
                   },
                   child: Card(
                     elevation: 2.0,

@@ -5,10 +5,10 @@ class Posts {
   final String body;
 
   Posts(
-      { this.userId,
-       this.id,
-       this.title,
-       this.body,});
+      {required this.userId,
+     required  this.id,
+      required this.title,
+      required this.body,});
 
   factory Posts.fromJson(Map<String, dynamic> json) {
     return Posts(

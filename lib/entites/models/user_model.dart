@@ -1,5 +1,5 @@
-import 'package:test_task_rest/models/address_model.dart';
-import 'package:test_task_rest/models/company_model.dart';
+import 'package:test_task_rest/entites/models/address_model.dart';
+import 'package:test_task_rest/models/models/company_model.dart';
 
 class User {
   final int id;
@@ -12,14 +12,14 @@ class User {
   final Company company;
 
   User(
-      { this.id,
-       this.name,
-       this.username,
-       this.email,
-       this.address,
-       this.phone,
-       this.website,
-       this.company});
+      {required this.id,
+     required  this.name,
+     required  this.username,
+    required   this.email,
+     required  this.address,
+      required this.phone,
+      required this.website,
+     required  this.company});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -33,6 +33,7 @@ class User {
         company: Company.fromJson(json['company']));
   }
 }
+
 
 
 /*

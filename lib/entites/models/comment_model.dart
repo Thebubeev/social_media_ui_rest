@@ -6,11 +6,11 @@ class Comments {
   final String body;
 
   Comments({
-    this.postId,
-    this.id,
-    this.name,
-    this.email,
-    this.body
+ required   this.postId,
+   required this.id,
+   required this.name,
+  required  this.email,
+  required  this.body
   });
 
   factory Comments.fromJson(Map<String, dynamic> json) {

@@ -5,7 +5,7 @@ class CommentPostWidget extends StatelessWidget {
   final String name;
   final String comment;
   const CommentPostWidget(
-      {Key key, @required this.name, @required this.comment})
+      {Key? key, required this.name, required this.comment})
       : super(key: key);
 
   @override

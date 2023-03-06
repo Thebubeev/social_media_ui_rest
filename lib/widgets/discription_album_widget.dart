@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task_rest/models/albums_model.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/albums_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 
 class DiscriptionAlbumWidget extends StatelessWidget {
   const DiscriptionAlbumWidget({
-    Key key,
-    @required this.useralbumid,
-    @required this.index,
-    @required this.user,
-    @required this.albums,
-    @required this.textDefaultColor,
+    Key? key,
+    required this.useralbumid,
+    required this.index,
+    required this.user,
+    required this.albums,
+    required this.textDefaultColor,
   }) : super(key: key);
 
   final int useralbumid;

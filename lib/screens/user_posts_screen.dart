@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/models/posts_model.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/posts_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 import 'package:test_task_rest/widgets/discription_post_widget.dart';
 
 class UserPostScreen extends StatelessWidget {
   final int userpostid;
   final User user;
-  const UserPostScreen({Key key, @required this.userpostid,@required  this.user}) : super(key: key);
+  const UserPostScreen({Key? key, required this.userpostid,required  this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +37,15 @@ class UserPostScreen extends StatelessWidget {
             if (snapshot.hasData) {
               var posts = snapshot.data;
               return ListView.builder(
-                  itemCount: posts.length,
+                  itemCount: posts!.length,
                   itemBuilder: ((context, index) {
-                    if (posts[index].userId == userpostid) {
+                    if (posts![index].userId == userpostid) {
                       return DescriptionPostWidget(
                           userpostid: userpostid,
                           user: user,
                           index: index,
                           posts: posts,
-                          textDefaultColor: textDefaultColor);
+                          textDefaultColor: textDefaultColor!);
                     } else {
                       return Container();
                     }

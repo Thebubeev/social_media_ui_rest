@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/models/comment.dart';
-import 'package:test_task_rest/models/comment_model.dart';
-import 'package:test_task_rest/models/posts_model.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/comment_model.dart';
+import 'package:test_task_rest/models/models/posts_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 import 'package:test_task_rest/widgets/comment_input_widget.dart';
 import 'package:test_task_rest/widgets/comment_post_widget.dart';
 import 'package:test_task_rest/widgets/discription_dialog_post_widget.dart';
@@ -12,12 +10,12 @@ import 'package:test_task_rest/widgets/user_short_info_widget.dart';
 
 class DescriptionPostWidget extends StatefulWidget {
   const DescriptionPostWidget({
-    Key key,
-    @required this.userpostid,
-    @required this.user,
-    @required this.index,
-    @required this.posts,
-    @required this.textDefaultColor,
+    Key? key,
+    required this.userpostid,
+    required this.user,
+    required this.index,
+    required this.posts,
+    required this.textDefaultColor,
   }) : super(key: key);
 
   final int userpostid;
@@ -31,8 +29,8 @@ class DescriptionPostWidget extends StatefulWidget {
 }
 
 class _DescriptionPostWidgetState extends State<DescriptionPostWidget> {
-  String firstHalf;
-  String secondHalf;
+  String? firstHalf;
+  String? secondHalf;
 
   bool _flag = true;
   final _key = GlobalKey<FormState>();
@@ -91,14 +89,14 @@ class _DescriptionPostWidgetState extends State<DescriptionPostWidget> {
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(left: 4, right: 4, top: 6),
-                  child: secondHalf.isEmpty
-                      ? Text(firstHalf)
+                  child: secondHalf!.isEmpty
+                      ? Text(firstHalf!)
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(_flag
-                                ? (firstHalf + "...")
-                                : (firstHalf + secondHalf)),
+                                ? (firstHalf! + "...")
+                                : (firstHalf! + secondHalf!)),
                             InkWell(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -134,7 +132,7 @@ class _DescriptionPostWidgetState extends State<DescriptionPostWidget> {
                     height: 170,
                     child: ListView.builder(
                       itemBuilder: ((context, index) {
-                        if (comments[index].postId == post.id) {
+                        if (comments![index].postId == post.id) {
                           return CommentPostWidget(
                               name: comments[index].email,
                               comment: comments[index].body);
@@ -142,7 +140,7 @@ class _DescriptionPostWidgetState extends State<DescriptionPostWidget> {
                           return Container();
                         }
                       }),
-                      itemCount: comments.length,
+                      itemCount: comments!.length,
                     ),
                   );
                 }

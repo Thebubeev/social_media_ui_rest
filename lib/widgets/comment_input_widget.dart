@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/models/comment.dart';
+import 'package:test_task_rest/entites/models/comment.dart';
 
-import '../models/posts_model.dart';
+import '../models/models/posts_model.dart';
 
 class CommentInputWidget extends StatefulWidget {
   final Posts post;
   final GlobalKey<FormState> globalKey;
   final TextEditingController textController;
   const CommentInputWidget({
-    Key key,
-    this.globalKey,
-    this.post,
-    this.textController,
+    Key? key,
+   required this.globalKey,
+    required this.post,
+   required this.textController,
   }) : super(key: key);
 
   @override
@@ -72,7 +72,7 @@ class _CommentInputWidgetState extends State<CommentInputWidget> {
                   controller: widget.textController,
                   onSaved: (val) {
                     setState(() {
-                      widget.textController.text = val.trim();
+                      widget.textController.text = val!.trim();
                     });
                   },
                 ),
@@ -87,8 +87,8 @@ class _CommentInputWidgetState extends State<CommentInputWidget> {
               height: 30,
               child: IconButton(
                   onPressed: () async {
-                    if (widget.globalKey.currentState.validate()) {
-                      widget.globalKey.currentState.save();
+                    if (widget.globalKey.currentState!.validate()) {
+                      widget.globalKey.currentState!.save();
                       await JsonPlaceHolderApi().sendCommentsToThePost(
                           widget.post.id,
                           Comment(

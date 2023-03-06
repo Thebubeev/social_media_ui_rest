@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class UserShortInfoWidget extends StatelessWidget {
   final String name;
   const UserShortInfoWidget({
-   @required this.name,
-    Key key,
-    @required this.widget,
+   required this.name,
+    Key? key,
+    required this.widget,
   }) : super(key: key);
 
   final Widget widget;

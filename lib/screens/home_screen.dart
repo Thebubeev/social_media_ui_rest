@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/config/router.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 import 'package:test_task_rest/screens/user_profile_screen.dart';
 import 'package:test_task_rest/widgets/change_theme_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             if (snapshot.hasData) {
               var users = snapshot.data;
               return ListView.builder(
-                  itemCount: users.length,
+                  itemCount: users!.length,
                   itemBuilder: ((context, index) {
                     return ListTile(
                       title: Text(
@@ -40,9 +39,12 @@ class HomeScreen extends StatelessWidget {
                       subtitle:
                           Text(users[index].username, style: textDefaultTheme),
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, RouteGenerator.USER_PROFILE,
-                            arguments: users[index]);
+                            
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => UserProfileScreen(
+                                user: users[index]))));
                       },
                     );
                   }));

@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:test_task_rest/constants/constants.dart';
-import 'package:test_task_rest/models/albums_model.dart';
-import 'package:test_task_rest/models/comment.dart';
-import 'package:test_task_rest/models/comment_model.dart';
-import 'package:test_task_rest/models/posts_model.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/entites/models/comment.dart';
+import 'package:test_task_rest/models/models/albums_model.dart';
+import 'package:test_task_rest/models/models/comment_model.dart';
+import 'package:test_task_rest/models/models/posts_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 
 class JsonPlaceHolderApi {
   Future<List<User>> fetchAllUsersData() async {

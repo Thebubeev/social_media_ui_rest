@@ -6,11 +6,11 @@ class Address {
   final Geo geo;
 
   Address(
-      { this.street,
-       this.suite,
-       this.city,
-       this.zipcode,
-       this.geo});
+      {required this.street,
+     required  this.suite,
+    required   this.city,
+    required   this.zipcode,
+     required  this.geo});
 
   factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
@@ -25,7 +25,7 @@ class Address {
 class Geo {
   final String lat;
   final String lng;
-  Geo({ this.lat,  this.lng});
+  Geo({required this.lat, required this.lng});
 
   factory Geo.fromJson(Map<String, dynamic> json) {
     return Geo(lat: json['lat'], lng: json['lng']);

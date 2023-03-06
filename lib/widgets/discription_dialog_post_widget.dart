@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/models/comment_model.dart';
+import 'package:test_task_rest/models/models/comment_model.dart';
 import 'package:test_task_rest/widgets/comment_input_widget.dart';
 import 'package:test_task_rest/widgets/comment_post_widget.dart';
 import 'package:test_task_rest/widgets/user_short_info_widget.dart';
 
-import '../models/posts_model.dart';
+import '../models/models/posts_model.dart';
 
 class DiscriptionDialogPostWidget extends StatefulWidget {
   final String name;
   final Widget widget;
   final Posts post;
   const DiscriptionDialogPostWidget(
-      {Key key, this.name, this.widget, this.post})
+      {Key? key,required this.name,required this.widget,required this.post})
       : super(key: key);
 
   @override
@@ -84,7 +84,7 @@ class _DiscriptionDialogPostWidgetState
                         height: 280,
                         child: ListView.builder(
                           itemBuilder: ((context, index) {
-                            if (comments[index].postId == widget.post.id) {
+                            if (comments![index].postId == widget.post.id) {
                               return CommentPostWidget(
                                   name: comments[index].email,
                                   comment: comments[index].body);
@@ -92,7 +92,7 @@ class _DiscriptionDialogPostWidgetState
                               return Container();
                             }
                           }),
-                          itemCount: comments.length,
+                          itemCount: comments!.length,
                         ),
                       );
                     }

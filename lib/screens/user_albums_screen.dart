@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/models/albums_model.dart';
-import 'package:test_task_rest/models/user_model.dart';
+import 'package:test_task_rest/models/models/albums_model.dart';
+import 'package:test_task_rest/models/models/user_model.dart';
 import 'package:test_task_rest/widgets/discription_album_widget.dart';
 
 class UserAlbumScreen extends StatelessWidget {
   final int useralbumid;
   final User user;
-  const UserAlbumScreen({Key key, this.useralbumid, this.user})
+  const UserAlbumScreen({Key? key,required this.useralbumid,required this.user})
       : super(key: key);
 
   @override
@@ -44,7 +44,7 @@ class UserAlbumScreen extends StatelessWidget {
                       childAspectRatio: 1,
                       crossAxisSpacing: 5,
                       mainAxisSpacing: 5),
-                  itemCount: albums.length,
+                  itemCount: albums!.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return Container(
                       alignment: Alignment.center,

@@ -3,7 +3,7 @@ class Company {
   final String catchPhrase;
   final String bs;
 
-  Company({ this.name,  this.catchPhrase,  this.bs});
+  Company({required this.name, required this.catchPhrase, required this.bs});
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return Company(
