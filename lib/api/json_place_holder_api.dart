@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:test_task_rest/constants/constants.dart';
-import 'package:test_task_rest/entites/models/comment.dart';
-import 'package:test_task_rest/models/models/albums_model.dart';
-import 'package:test_task_rest/models/models/comment_model.dart';
-import 'package:test_task_rest/models/models/posts_model.dart';
-import 'package:test_task_rest/models/models/user_model.dart';
+import 'package:test_task_rest/entities/albums_entity_freezed/albums_entity.dart';
+import 'package:test_task_rest/entities/comment_entity_freezed/comment_entity.dart';
+import 'package:test_task_rest/entities/comments_entity_freezed/comments_entity.dart';
+import 'package:test_task_rest/entities/posts_entity_freezed/posts_entity.dart';
+import 'package:test_task_rest/entities/user_entity_freezed.dart/user_entity.dart';
 
 class JsonPlaceHolderApi {
-  Future<List<User>> fetchAllUsersData() async {
+  Future<List<UserEntity>> fetchAllUsersData() async {
     final responce = await http.get(
         Uri.parse(
           Constants.URL + Constants.USERS,
@@ -19,13 +19,13 @@ class JsonPlaceHolderApi {
     if (responce.statusCode == 200) {
       final List jsonResponse = json.decode(responce.body);
 
-      return jsonResponse.map((user) => User.fromJson(user)).toList();
+      return jsonResponse.map((user) => UserEntity.fromJson(user)).toList();
     } else {
       throw Exception('Error: ${responce.reasonPhrase}');
     }
   }
 
-  Future<List<Posts>> fetchAllPostsData() async {
+  Future<List<PostsEntity>> fetchAllPostsData() async {
     final responce = await http.get(
         Uri.parse(
           Constants.URL + Constants.POSTS,
@@ -35,13 +35,13 @@ class JsonPlaceHolderApi {
     if (responce.statusCode == 200) {
       final List jsonResponse = json.decode(responce.body);
 
-      return jsonResponse.map((post) => Posts.fromJson(post)).toList();
+      return jsonResponse.map((post) => PostsEntity.fromJson(post)).toList();
     } else {
       throw Exception('Error: ${responce.reasonPhrase}');
     }
   }
 
-  Future<List<Albums>> fetchAllAlbumsData() async {
+  Future<List<AlbumsEntity>> fetchAllAlbumsData() async {
     final responce = await http.get(
         Uri.parse(
           Constants.URL + Constants.ALBUMS,
@@ -51,13 +51,13 @@ class JsonPlaceHolderApi {
     if (responce.statusCode == 200) {
       final List jsonResponse = json.decode(responce.body);
 
-      return jsonResponse.map((post) => Albums.fromJson(post)).toList();
+      return jsonResponse.map((post) => AlbumsEntity.fromJson(post)).toList();
     } else {
       throw Exception('Error: ${responce.reasonPhrase}');
     }
   }
 
-  Future<List<Comments>> fetchAllCommentsOfThePostData(int postid) async {
+  Future<List<CommentsEntity>> fetchAllCommentsOfThePostData(int postid) async {
     final responce = await http.get(
         Uri.parse(
           Constants.URL + Constants.POSTS + '/$postid' + Constants.COMMENTS,
@@ -67,13 +67,14 @@ class JsonPlaceHolderApi {
     if (responce.statusCode == 200) {
       final List jsonResponse = json.decode(responce.body);
 
-      return jsonResponse.map((post) => Comments.fromJson(post)).toList();
+      return jsonResponse.map((post) => CommentsEntity.fromJson(post)).toList();
     } else {
       throw Exception('Error: ${responce.reasonPhrase}');
     }
   }
 
-  Future<Comment> sendCommentsToThePost(int postid, Comment comment) async {
+  Future<CommentsEntity> sendCommentsToThePost(
+      int postid, CommentEntity comment) async {
     final responce = await http.post(
         Uri.parse(
           Constants.URL + Constants.POSTS + '/$postid',
@@ -83,7 +84,12 @@ class JsonPlaceHolderApi {
         },
         body: jsonEncode(comment.toJson()));
 
-    Comment comments = Comment.fromJson(jsonDecode(responce.body));
-    return comments;
+    // final comments = CommentEntity.fromJson(jsonDecode(responce.body));
+    return CommentsEntity(
+        postId: postid,
+        id: 11111,
+        name: comment.title,
+        email: 'Sincere@april.biz',
+        body: comment.body);
   }
 }

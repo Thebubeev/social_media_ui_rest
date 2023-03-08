@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:test_task_rest/entites/geo_entity_freezed/geo_entity.dart';
+import 'package:test_task_rest/entities/geo_entity_freezed/geo_entity.dart';
 part 'address_entity.freezed.dart';
 part 'address_entity.g.dart';
 

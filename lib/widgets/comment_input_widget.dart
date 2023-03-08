@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task_rest/api/json_place_holder_api.dart';
-import 'package:test_task_rest/entites/models/comment.dart';
-
-import '../models/models/posts_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_task_rest/bloc/social_media_bloc.dart';
+import 'package:test_task_rest/entities/comment_entity_freezed/comment_entity.dart';
+import 'package:test_task_rest/entities/posts_entity_freezed/posts_entity.dart';
 
 class CommentInputWidget extends StatefulWidget {
-  final Posts post;
+  final PostsEntity post;
   final GlobalKey<FormState> globalKey;
   final TextEditingController textController;
   const CommentInputWidget({
     Key? key,
-   required this.globalKey,
+    required this.globalKey,
     required this.post,
-   required this.textController,
+    required this.textController,
   }) : super(key: key);
 
   @override
@@ -89,12 +89,13 @@ class _CommentInputWidgetState extends State<CommentInputWidget> {
                   onPressed: () async {
                     if (widget.globalKey.currentState!.validate()) {
                       widget.globalKey.currentState!.save();
-                      await JsonPlaceHolderApi().sendCommentsToThePost(
-                          widget.post.id,
-                          Comment(
-                              title: 'Leanne Graham',
-                              body: widget.textController.text.trim(),
-                              userId: 1));
+                      BlocProvider.of<SocialMediaBloc>(context).add(
+                          SendCommentsToThePostEvent(
+                              widget.post.id,
+                              CommentEntity(
+                                  title: 'Leanne Graham',
+                                  body: widget.textController.text.trim(),
+                                  userId: 1)));
                       widget.textController.text = '';
                     }
                   },

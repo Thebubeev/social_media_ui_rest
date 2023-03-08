@@ -8,12 +8,14 @@ part of 'comment_entity.dart';
 
 _$_CommentEntity _$$_CommentEntityFromJson(Map<String, dynamic> json) =>
     _$_CommentEntity(
-      lat: json['lat'] as String,
-      lng: json['lng'] as String,
+      title: json['title'] as String,
+      body: json['body'] as String,
+      userId: json['userId'] as int,
     );
 
 Map<String, dynamic> _$$_CommentEntityToJson(_$_CommentEntity instance) =>
     <String, dynamic>{
-      'lat': instance.lat,
-      'lng': instance.lng,
+      'title': instance.title,
+      'body': instance.body,
+      'userId': instance.userId,
     };

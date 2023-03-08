@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task_rest/models/models/albums_model.dart';
-import 'package:test_task_rest/models/models/user_model.dart';
+import 'package:test_task_rest/entities/albums_entity_freezed/albums_entity.dart';
+import 'package:test_task_rest/entities/user_entity_freezed.dart/user_entity.dart';
+
 
 class DiscriptionAlbumWidget extends StatelessWidget {
   const DiscriptionAlbumWidget({
@@ -15,8 +16,8 @@ class DiscriptionAlbumWidget extends StatelessWidget {
 
   final int useralbumid;
   final int index;
-  final User user;
-  final List<Albums> albums;
+  final UserEntity user;
+  final List<AlbumsEntity> albums;
   final Color textDefaultColor;
 
   @override

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:test_task_rest/bloc/social_media_bloc.dart';
 import 'package:test_task_rest/screens/home_screen.dart';
 import 'package:test_task_rest/config/theme_provider.dart';
 
 void main() {
-  runApp( const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,12 +19,15 @@ class MyApp extends StatelessWidget {
         create: (_) => ThemeProvider(),
         builder: (context, _) {
           final themeProvider = Provider.of<ThemeProvider>(context);
-          return MaterialApp(
-            themeMode: themeProvider.themeMode,
-            theme: MyThemes.lightTheme,
-            darkTheme: MyThemes.darkTheme,
-            debugShowCheckedModeBanner: false,
-            home: const HomeScreen(),
+          return BlocProvider(
+            create: (context) => SocialMediaBloc(),
+            child: MaterialApp(
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              debugShowCheckedModeBanner: false,
+              home: const HomeScreen(),
+            ),
           );
         });
   }

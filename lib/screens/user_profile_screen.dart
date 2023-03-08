@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task_rest/models/models/user_model.dart';
+import 'package:test_task_rest/entities/user_entity_freezed.dart/user_entity.dart';
 import 'package:test_task_rest/screens/user_albums_screen.dart';
 import 'package:test_task_rest/screens/user_posts_screen.dart';
 import 'package:test_task_rest/widgets/user_widget.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  final User user;
+  final UserEntity user;
   const UserProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override

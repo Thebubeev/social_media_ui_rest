@@ -20,8 +20,9 @@ CommentEntity _$CommentEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentEntity {
-  String get lat => throw _privateConstructorUsedError;
-  String get lng => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get body => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $CommentEntityCopyWith<$Res> {
           CommentEntity value, $Res Function(CommentEntity) then) =
       _$CommentEntityCopyWithImpl<$Res, CommentEntity>;
   @useResult
-  $Res call({String lat, String lng});
+  $Res call({String title, String body, int userId});
 }
 
 /// @nodoc
@@ -51,18 +52,23 @@ class _$CommentEntityCopyWithImpl<$Res, $Val extends CommentEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lat = null,
-    Object? lng = null,
+    Object? title = null,
+    Object? body = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$_CommentEntityCopyWith<$Res>
       __$$_CommentEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String lat, String lng});
+  $Res call({String title, String body, int userId});
 }
 
 /// @nodoc
@@ -89,18 +95,23 @@ class __$$_CommentEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lat = null,
-    Object? lng = null,
+    Object? title = null,
+    Object? body = null,
+    Object? userId = null,
   }) {
     return _then(_$_CommentEntity(
-      lat: null == lat
-          ? _value.lat
-          : lat // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      lng: null == lng
-          ? _value.lng
-          : lng // ignore: cast_nullable_to_non_nullable
+      body: null == body
+          ? _value.body
+          : body // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -108,19 +119,22 @@ class __$$_CommentEntityCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CommentEntity implements _CommentEntity {
-  const _$_CommentEntity({required this.lat, required this.lng});
+  const _$_CommentEntity(
+      {required this.title, required this.body, required this.userId});
 
   factory _$_CommentEntity.fromJson(Map<String, dynamic> json) =>
       _$$_CommentEntityFromJson(json);
 
   @override
-  final String lat;
+  final String title;
   @override
-  final String lng;
+  final String body;
+  @override
+  final int userId;
 
   @override
   String toString() {
-    return 'CommentEntity(lat: $lat, lng: $lng)';
+    return 'CommentEntity(title: $title, body: $body, userId: $userId)';
   }
 
   @override
@@ -128,13 +142,14 @@ class _$_CommentEntity implements _CommentEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommentEntity &&
-            (identical(other.lat, lat) || other.lat == lat) &&
-            (identical(other.lng, lng) || other.lng == lng));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, lat, lng);
+  int get hashCode => Object.hash(runtimeType, title, body, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -152,16 +167,19 @@ class _$_CommentEntity implements _CommentEntity {
 
 abstract class _CommentEntity implements CommentEntity {
   const factory _CommentEntity(
-      {required final String lat,
-      required final String lng}) = _$_CommentEntity;
+      {required final String title,
+      required final String body,
+      required final int userId}) = _$_CommentEntity;
 
   factory _CommentEntity.fromJson(Map<String, dynamic> json) =
       _$_CommentEntity.fromJson;
 
   @override
-  String get lat;
+  String get title;
   @override
-  String get lng;
+  String get body;
+  @override
+  int get userId;
   @override
   @JsonKey(ignore: true)
   _$$_CommentEntityCopyWith<_$_CommentEntity> get copyWith =>

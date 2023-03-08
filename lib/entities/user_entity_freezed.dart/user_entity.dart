@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:test_task_rest/entites/address_entity_freezed/address_entity.dart';
-import 'package:test_task_rest/entites/company_entity_freezed/company_entity.dart';
+import 'package:test_task_rest/entities/address_entity_freezed/address_entity.dart';
+import 'package:test_task_rest/entities/company_entity_freezed/company_entity.dart';
 
 part 'user_entity.freezed.dart';
 part 'user_entity.g.dart';

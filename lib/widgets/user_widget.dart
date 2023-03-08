@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
-import 'package:test_task_rest/models/models/user_model.dart';
+import 'package:test_task_rest/entities/user_entity_freezed.dart/user_entity.dart';
 
-ExpansionTile userProfileInfo(BuildContext context, TextStyle textDefaultTheme, User user) {
+ExpansionTile userProfileInfo(BuildContext context, TextStyle textDefaultTheme, UserEntity user) {
     return ExpansionTile(
           collapsedIconColor: Theme.of(context).iconTheme.color,
           textColor: Colors.black,
